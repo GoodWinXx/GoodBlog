@@ -1,0 +1,148 @@
+{extend name="/layout/base"}
+{block name="body"}
+<div>
+    <a href="__PUBLIC__/index.php/admin/admin/create" class="layui-btn layui-btn-small">新增用户</a>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+{/block}
+{block name="script"}
+<script type="text/html " id="barDemo">
+    <a class="layui-btn layui-btn-xs"  lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['form', 'table'], function () {
+        // var $ = layui.jquery,
+        //     form = layui.form,
+            table = layui.table;
+
+        table.render({
+            elem: '#test',
+            url: '__PUBLIC__/index.php/admin/admin/lists',
+            cols: [[
+                {type: "checkbox", width: 50, fixed: "left"},
+                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'username', width: 80, title: '用户名'},
+                {field: 'password', width: 80, title: '密码', sort: true},
+                { width: 200,title:"操作", toolbar:'#barDemo'}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true
+        });
+
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data;
+             //console.log(data);
+            if(obj.event === 'edit'){
+                window.location.href = "edit?id=" + data.id;
+                layer.msg('编辑操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('确定要删除吗', function(del){
+                    //向服务端发送删除指令
+                    var id = data.id;//向服务端发送删除指令
+                    var $ = layui.$;
+                    $.ajax({
+                        type:"POST",
+                        url:"../admin/del",
+                        data:{
+                            "id" : id
+                        },
+                        success:function (id) {
+                            if (id){
+                                layer.msg("success");
+                            }else{
+                                layer.msg("fail");
+                            }
+                        }
+                    });
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(del);
+                });
+            }
+        });
+
+    //     table.on('tool(currentTableId)', function (obj) {
+    //         var data = obj.data;
+    //         if (obj.event === 'edit') {
+    //             layer.alert('编辑行：<br>' + JSON.stringify(data))
+    //         } else if (obj.event === 'delete') {
+    //             layer.confirm('真的删除行么', function (index) {
+    //                 obj.del();
+    //                 layer.close(index);
+    //             });
+    //         }
+    //     });
+    //
+    //     table.on('tool(currentTableId)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+    //         var data = obj.data;
+    //         if(obj.event === 'edit'){
+    //             window.location.href = "edit?id=" + data.id;
+    //             layer.msg('编辑操作');
+    //         } else if(obj.event === 'del'){
+    //             layer.confirm('确定要删除吗', function(del){
+    //                 //向服务端发送删除指令
+    //                 var id = data.id;//向服务端发送删除指令
+    //                 var $ = layui.$;
+    //                 $.ajax({
+    //                     type:"POST",
+    //                     url:"../admin/del",
+    //                     data:{
+    //                         "id" : id
+    //                     },
+    //                     success:function (id) {
+    //                         if (id){
+    //                             layer.msg("success");
+    //                         }else{
+    //                             layer.msg("fail");
+    //                         }
+    //                     }
+    //                 });
+    //                 obj.del(); //删除对应行（tr）的DOM结构
+    //                 layer.close(del);
+    //             });
+    //         }
+    //     });
+    // });
+    //     // 监听搜索操作
+    //     form.on('submit(data-search-btn)', function (data) {
+    //         var result = JSON.stringify(data.field);
+    //         layer.alert(result, {
+    //             title: '最终的搜索信息'
+    //         });
+    //
+    //         //执行搜索重载
+    //         table.reload('currentTableId', {
+    //             page: {
+    //                 curr: 1
+    //             }
+    //             , where: {
+    //                 searchParams: result
+    //             }
+    //         }, 'data');
+    //
+    //         return false;
+    //     });
+    //
+    //     // 监听添加操作
+    //     $(".data-add-btn").on("click", function () {
+    //         layer.msg('添加数据');
+    //     });
+    //
+        // 监听删除操作
+        // $(".data-delete-btn").on("click", function () {
+        //     var checkStatus = table.checkStatus('currentTableId')
+        //         , data = checkStatus.data;
+        //     layer.alert(JSON.stringify(data));
+        // });
+    //
+    //     //监听表格复选框选择
+    //     table.on('checkbox(currentTableFilter)', function (obj) {
+    //         console.log(obj)
+    //     });
+    //
+
+
+     });
+</script>
+{/block}

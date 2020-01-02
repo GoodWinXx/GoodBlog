@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://layuimini.99php.cn/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>NewBlog</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="http://layuimini.99php.cn/images/favicon.ico">
+    <link rel="stylesheet" href="__PUBLIC__/layuimini/lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="__PUBLIC__/layuimini/css/layuimini.css" media="all">
+    <link rel="stylesheet" href="__PUBLIC__/layuimini/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style id="layuimini-bg-color">.layui-layout-admin .layui-header{background-color:#1aa094!important;}
+    .layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:#197971!important;}
+    .layui-layout-admin .layui-logo {background-color:#243346!important;}
+    .layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:#2f4056!important;}
+    .layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:#3b3f4b;}
+    .layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {
+        background-color: #1aa094 !important;
+    }</style>
+    <!--<link id="layuicss-layer" rel="stylesheet" href="./LayuiMini - 基于Layui的后台管理系统前端模板_files/layer.css" media="all"></head>-->
+<body class="layui-layout-body layuimini-all">
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-header header">
+        <div class="layui-logo"><a href="http://layuimini.99php.cn/">
+            <img src="__PUBLIC__/layuimini/images/logo.png" alt="logo">
+            <h1>LayuiMini</h1>
+        </a></div>
+        <a>
+            <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
+        </a>
+
+        <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu mobile layui-hide-xs"><li class="layui-nav-item layui-this" id="currencyHeaderId" data-menu="currency"> <a href="javascript:;"><i class="fa fa-address-book"></i> 常规管理</a> </li>
+            <li class="layui-nav-item " id="componentHeaderId" data-menu="component"> <a href="javascript:;"><i class="fa fa-lemon-o"></i> 组件管理</a> </li>
+            <li class="layui-nav-item " id="otherHeaderId" data-menu="other"> <a href="javascript:;"><i class="fa fa-slideshare"></i> 其它管理</a> </li>
+            <span class="layui-nav-bar"></span></ul>
+        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child layui-header-mini-menu"><dd><a href="javascript:;" id="currencyHeaderId" data-menu="currency"><i class="fa fa-address-book"></i> 常规管理</a></dd>
+                    <dd><a href="javascript:;" id="componentHeaderId" data-menu="component"><i class="fa fa-lemon-o"></i> 组件管理</a></dd>
+                    <dd><a href="javascript:;" id="otherHeaderId" data-menu="other"><i class="fa fa-slideshare"></i> 其它管理</a></dd>
+                </dl>
+            </li>
+            <span class="layui-nav-bar"></span></ul>
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" data-clear="清理" class="layuimini-clear" data-href="api/clear.json"><i class="fa fa-trash-o"></i></a>
+            </li>
+            <li class="layui-nav-item layuimini-setting">
+                <a href="javascript:;">admin<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="javascript:;" data-iframe-tab="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" data-iframe-tab="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" class="login-out">退出登录</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item layuimini-select-bgcolor mobile layui-hide-xs">
+                <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
+            </li>
+            <span class="layui-nav-bar"></span></ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll layui-left-menu"><ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-home"></i><span class="layui-left-nav"> 主页模板</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="page/welcome-1.html" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 主页一</span></a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="page/welcome-2.html" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 主页二</span></a>
+                </dd>
+            </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="__PUBLIC__/index.php/admin/admin/index" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="page/menu.html" target="_self"><i class="fa fa-window-maximize"></i><span class="layui-left-nav">用户管理</span></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="__PUBLIC__/index.php/admin/articles/index" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-5" data-tab="page/table.html" target="_self"><i class="fa fa-file-text"></i><span class="layui-left-nav"> 文章管理</span></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-calendar"></i><span class="layui-left-nav"> 表单示例</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-6" data-tab="page/form.html" target="_self"><i class="fa fa-list-alt"></i><span class="layui-left-nav"> 普通表单</span></a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-7" data-tab="page/form-step.html" target="_self"><i class="fa fa-navicon"></i><span class="layui-left-nav"> 分步表单</span></a>
+                </dd>
+            </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-flag-o"></i><span class="layui-left-nav"> 登录模板</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-8" data-tab="page/login-1.html" target="_blank"><i class="fa fa-stumbleupon-circle"></i><span class="layui-left-nav"> 登录-1</span></a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-9" data-tab="page/login-2.html" target="_blank"><i class="fa fa-viacoin"></i><span class="layui-left-nav"> 登录-2</span></a>
+                </dd>
+            </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-home"></i><span class="layui-left-nav"> 异常页面</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="page/404.html" target="_self"><i class="fa fa-hourglass-end"></i><span class="layui-left-nav"> 404页面</span></a>
+                </dd>
+            </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-snowflake-o"></i><span class="layui-left-nav"> 其它界面</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="page/button.html" target="_self"><i class="fa fa-snowflake-o"></i><span class="layui-left-nav"> 按钮示例</span></a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="page/layer.html" target="_self"><i class="fa fa-shield"></i><span class="layui-left-nav"> 弹出层</span></a>
+                </dd>
+            </dl>
+            </li>
+            <span class="layui-nav-bar"></span></ul>
+            <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-hide" id="component">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-13" data-tab="page/icon.html" target="_self"><i class="fa fa-dot-circle-o"></i><span class="layui-left-nav"> 图标列表</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-14" data-tab="page/icon-picker.html" target="_self"><i class="fa fa-adn"></i><span class="layui-left-nav"> 图标选择</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-15" data-tab="page/color-select.html" target="_self"><i class="fa fa-dashboard"></i><span class="layui-left-nav"> 颜色选择</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-16" data-tab="page/table-select.html" target="_self"><i class="fa fa-angle-double-down"></i><span class="layui-left-nav"> 下拉选择</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-17" data-tab="page/upload.html" target="_self"><i class="fa fa-arrow-up"></i><span class="layui-left-nav"> 文件上传</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-18" data-tab="page/editor.html" target="_self"><i class="fa fa-edit"></i><span class="layui-left-nav"> 富文本编辑器</span></a>
+                </li>
+                <span class="layui-nav-bar"></span></ul>
+            <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-hide" id="other">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-meetup"></i><span class="layui-left-nav"> 多级菜单</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                    <dd>
+                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-calendar"></i><span class="layui-left-nav"> 按钮1</span><span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-snowflake-o"></i><span class="layui-left-nav"> 按钮2</span><span class="layui-nav-more"></span></a><dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-19" data-tab="page/button.html" target="_self"><i class="fa fa-snowflake-o"></i><span class="layui-left-nav"> 按钮3</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-20" data-tab="page/form.html" target="_self"><i class="fa fa-calendar"></i><span class="layui-left-nav"> 表单4</span></a>
+                            </dd>
+                        </dl>
+                        </dd>
+                    </dl>
+                    </dd>
+                </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-21" data-tab="page/error.html" target="_self"><i class="fa fa-superpowers"></i><span class="layui-left-nav"> 失效菜单</span></a>
+                </li>
+                <span class="layui-nav-bar"></span></ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        {block name="body"}{/block}
+        <!--<div class="layui-tab" lay-filter="layuiminiTab" id="top_tabs_box">-->
+            <!--<ul class="layui-tab-title" id="top_tabs">-->
+                <!--<li class="layui-this" id="layuiminiHomeTabId" lay-id="page/welcome-1.html?mpi=m-p-i-0"><i class="fa fa-home"></i> <span>首页</span></li>-->
+            <!--</ul>-->
+            <!--<ul class="layui-nav closeBox">-->
+                <!--<li class="layui-nav-item">-->
+                    <!--<a href="javascript:;"> <i class="fa fa-dot-circle-o"></i> 页面操作<span class="layui-nav-more"></span></a>-->
+                    <!--<dl class="layui-nav-child">-->
+                        <!--<dd><a href="javascript:;" data-page-close="other"><i class="fa fa-window-close"></i> 关闭其他</a></dd>-->
+                        <!--<dd><a href="javascript:;" data-page-close="all"><i class="fa fa-window-close-o"></i> 关闭全部</a></dd>-->
+                    <!--</dl>-->
+                <!--</li>-->
+                <!--<span class="layui-nav-bar"></span></ul>-->
+            <!--<div class="layui-tab-content clildFrame">-->
+                <!--<div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show"><iframe width="100%" height="100%" frameborder="0" src="__PUBLIC__/layuimini/page/welcome-1.html"></iframe></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</div>
+
+<!--百度统计代码-开始 正式使用请删除-->
+<!--<script>-->
+    <!--var _hmt = _hmt || [];-->
+    <!--(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?d97abf6d61c21d773f97835defbdef4e";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();-->
+<!--</script>-->
+<!--百度统计代码-结束-->
+
+<script src="__PUBLIC__/layuimini/lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="__PUBLIC__/layuimini/js/lay-config.js" charset="utf-8"></script>
+{block name="script"}{/block}
+<!--<script>-->
+<!--layui.use(['element', 'layer', 'layuimini'], function () {-->
+<!--var $ = layui.jquery,-->
+<!--element = layui.element,-->
+<!--layer = layui.layer;-->
+
+<!--layuimini.init('__PUBLIC__/layuimini/api/init.json');-->
+
+<!--$('.login-out').on("click", function () {-->
+<!--layer.msg('退出登录成功', function () {-->
+<!--window.location = '/page/login-1.html';-->
+<!--});-->
+<!--});-->
+<!--});-->
+<!--</script>-->
+
+
+<div class="layui-layer-move"></div></body></html>

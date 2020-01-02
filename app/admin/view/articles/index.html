@@ -1,0 +1,72 @@
+{extend name="/layout/base"}
+{block name="body"}
+<div>
+    <a href="__PUBLIC__/index.php/admin/articles/create" class="layui-btn layui-btn-small">新增文章</a>
+</div>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+{/block}
+{block name="script"}
+<script type="text/html " id="barDemo">
+    <a class="layui-btn layui-btn-xs"  lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['form', 'table'], function () {
+        // var $ = layui.jquery,
+        //     form = layui.form,
+        table = layui.table;
+
+        table.render({
+            elem: '#test',
+            url: '__PUBLIC__/index.php/admin/articles/lists',
+            cols: [[
+                {type: "checkbox", width: 50, fixed: "left"},
+                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'title', width: 150, title: '标题'},
+                {field: 'keywords', width: 120, title: '关键词', sort: true},
+                {field: 'author', width: 120, title: '作者'},
+                {field: 'content', width: 120, title: '文章内容'},
+                {field: 'create_time', width: 120, title: '时间'},
+                {field: 'click', width: 80, title: '点击数'},
+                {field: 'status', width: 80, title: '开关'},
+                {field: 'cate_id', width: 80, title: '所属分类'},
+                { width: 200,title:"操作", toolbar:'#barDemo'}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true
+        });
+
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data;
+            //console.log(data);
+            if(obj.event === 'edit'){
+                window.location.href = "edit?id=" + data.id;
+                layer.msg('编辑操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('确定要删除吗', function(del){
+                    //向服务端发送删除指令
+                    var id = data.id;//向服务端发送删除指令
+                    var $ = layui.$;
+                    $.ajax({
+                        type:"POST",
+                        url:"../articles/del",
+                        data:{
+                            "id" : id
+                        },
+                        success:function (id) {
+                            if (id){
+                                layer.msg("success");
+                            }else{
+                                layer.msg("fail");
+                            }
+                        }
+                    });
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(del);
+                });
+            }
+        });
+    });
+</script>
+{/block}
